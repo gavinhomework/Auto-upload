@@ -7,7 +7,7 @@
 grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' cdnip.csv > cdnip.txt || { echo "Error: Failed to extract IP addresses from cdnip.csv" ; exit 1; }
 
 # 使用 sed 在 cdnip.txt 文件中每行末尾添加文字，并输出到 liantong.txt 文件中
-sed 's/$/:443#联通优选IP/' cdnip.txt > liantong.txt || { echo "Error: Failed to add text to cdnip.txt" ; exit 1; }
+sed 's/$/#后修改为你想要添加的文字/' cdnip.txt > liantong.txt || { echo "Error: Failed to add text to cdnip.txt" ; exit 1; }
 
 # 提示完成
 echo "IP 地址提取并添加完成，请查看 liantong.txt 文件。"
@@ -16,8 +16,8 @@ echo "IP 地址提取并添加完成，请查看 liantong.txt 文件。"
 export LANG=zh_CN.UTF-8
 
 # 定义 Cloudflare KV 相关信息
-DOMAIN="cf-workers-text2kv-y2t.pages.dev"
-TOKEN="mytest"
+DOMAIN="填写KV库的pages地址"
+TOKEN="填写KV密码"
 
 # 检查是否有传入文件名参数
 if [ -n "$1" ]; then 
@@ -50,8 +50,8 @@ MESSAGE=$(cat liantong.txt)
 
 
 # 定义 Telegram 机器人的 API Token 和 Chat ID
-TELEGRAM_API_TOKEN="6431427814:AAEGBM3U_C6BarEocyJDtFszgt9zvnvACII"
-CHAT_ID="953800741"
+TELEGRAM_API_TOKEN="你的电报APIkey"
+CHAT_ID="你的chatid"
 
 # 验证 Telegram API Token 和 Chat ID 是否有效
 if [ -z "$TELEGRAM_API_TOKEN" ] || [ -z "$CHAT_ID" ]; then
