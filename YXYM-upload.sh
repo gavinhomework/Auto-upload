@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # 执行 CloudflareST 测试并生成 yuming.csv 文件
-./CloudflareST --allip -f Fandai.txt -n 200 -url https://speedtest.neobirdfly.eu.org/100m -sl 5 -tl 350 -dn 3 -o yuming.csv
+./CloudflareST  -n 200 -url https://speedtest.neobirdfly.eu.org/100m -sl 5 -tl 350 -dn 3 -o yuming.csv
 
 # 使用 grep 提取 IP 地址并写入到 yuming.txt 文件中
 grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' yuming.csv > yuming.txt || { echo "Error: Failed to extract IP addresses from yuming.csv" ; exit 1; }
 
 # Cloudflare API 配置信息
-API_EMAIL="gavin8857@gmail.com"
-API_KEY="bc638ffbc3fe16388aca041d45bc603a1a23b"
-ZONE_ID="0a8b838c05ad59e0c0e8e84a9225408e"
-SUBDOMAIN="cfproxy"  # 替换为你的二级域名，不包含主域名部分
-DOMAIN="neobirdfly.eu.org"  # 替换为你的主域名
+API_EMAIL="your@example.com"  # 替换为你的注册CF的邮箱
+API_TOKEN="your_cloudflare_api_token"  # 替换为你的 Cloudflare API 令牌
+ZONE_ID="your_zone_id"  # 替换为你的 Zone ID
+SUBDOMAIN="example"  # 替换为你的二级域名，不包含主域名部分
+DOMAIN="fuck.gfw"  # 替换为你的主域名
 
 # 完整的二级域名
 FULL_DOMAIN="${SUBDOMAIN}.${DOMAIN}"
