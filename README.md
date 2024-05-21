@@ -15,4 +15,4 @@ DOMAIN：你的主域名（例如 example.com）
 
 ## 感谢项目
 - _https://github.com/XIU2/CloudflareSpeedTest_
-
+- _https://github.com/cmliu/CF-Workers-TEXT2KV_
