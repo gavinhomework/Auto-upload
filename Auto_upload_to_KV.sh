@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # 执行 CloudflareST 测试并生成 cdnip.csv 文件
-./CloudflareST --allip -n 200 --httping-code 200 -url https://speedtest.neobirdfly.eu.org/100m -o cdnip.csv
+./CloudflareST --allip -n 200 --httping-code 200 -sl 3 -tl 300 -o cdnip.csv
 
 # 使用 grep 提取 IP 地址并写入到 cdnip.txt 文件中
 grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' cdnip.csv > cdnip.txt || { echo "Error: Failed to extract IP addresses from cdnip.csv" ; exit 1; }
 
-# 使用 sed 在 cdnip.txt 文件中每行末尾添加文字，并输出到 liantong.txt 文件中
-sed 's/$/#后修改为你想要添加的文字/' cdnip.txt > liantong.txt || { echo "Error: Failed to add text to cdnip.txt" ; exit 1; }
+# 使用 sed 在 cdnip.txt 文件中每行末尾添加文字，并输出到 proxyip.txt 文件中
+sed 's/$:2096等/#后修改为你想要添加的文字/' cdnip.txt > proxyip.txt || { echo "Error: Failed to add text to cdnip.txt" ; exit 1; } #默认443，可以添加
 
 # 提示完成
-echo "IP 地址提取并添加完成，请查看 liantong.txt 文件。"
+echo "IP 地址提取并添加完成，请查看 proxyip.txt 文件。"
 
 # 导出 LANG 变量
 export LANG=zh_CN.UTF-8
@@ -46,7 +46,7 @@ echo "文件上传结果：$UPLOAD_RESULT"
 echo "更新数据完成"
 
 # 读取 liantong.txt 文件的内容
-MESSAGE=$(cat liantong.txt)
+MESSAGE=$(cat proxyip.txt)
 
 
 # 定义 Telegram 机器人的 API Token 和 Chat ID
