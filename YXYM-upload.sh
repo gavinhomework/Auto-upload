@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 执行 CloudflareST 测试并生成 yuming.csv 文件
-./CloudflareST  -n 200 -url https://speedtest.neobirdfly.eu.org/100m -sl 5 -tl 350 -dn 3 -o yuming.csv
+./CloudflareST  -n 200  -sl 5 -tl 350 -dn 3 -o yuming.csv
 
 # 使用 grep 提取 IP 地址并写入到 yuming.txt 文件中
 grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' yuming.csv > yuming.txt || { echo "Error: Failed to extract IP addresses from yuming.csv" ; exit 1; }
