@@ -60,7 +60,7 @@ if [ -z "$TELEGRAM_API_TOKEN" ] || [ -z "$CHAT_ID" ]; then
 fi
 
 # 使用 curl 命令向 Telegram 发送消息
-curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage" \
+curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage" \   #可以替换为你的电报反代
      -d "chat_id=${CHAT_ID}" \
      -d "text=${MESSAGE}" || { echo "Error: Failed to send message to Telegram" ; exit 1; }
 
