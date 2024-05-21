@@ -13,6 +13,8 @@ DOMAIN：你的主域名（例如 example.com）
 运行这个脚本后，所有该二级域名下现有的 A 记录将被删除，并根据 yuming.txt 文件中的 IP 地址重新创建新的 A 记录。
 运行脚本前请确保已安装 jq
 
-## 感谢项目
+## 灵感来自于
 - _https://github.com/XIU2/CloudflareSpeedTest_
 - _https://github.com/cmliu/CF-Workers-TEXT2KV_
+# 感谢
+[XIU2](https://github.com/XIU2/CloudflareSpeedTest)、[cmliu](https://github.com/cmliu/CF-Workers-TEXT2KV)
