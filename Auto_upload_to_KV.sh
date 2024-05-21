@@ -7,7 +7,7 @@
 grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' cdnip.csv > cdnip.txt || { echo "Error: Failed to extract IP addresses from cdnip.csv" ; exit 1; }
 
 # 使用 sed 在 cdnip.txt 文件中每行末尾添加文字，并输出到 proxyip.txt 文件中
-sed 's/$:2096等/#后修改为你想要添加的文字/' cdnip.txt > proxyip.txt || { echo "Error: Failed to add text to cdnip.txt" ; exit 1; } #默认443，可以添加
+sed 's/$:2096/#后修改为你想要添加的文字/' cdnip.txt > proxyip.txt || { echo "Error: Failed to add text to cdnip.txt" ; exit 1; } #默认443，可以添加
 
 # 提示完成
 echo "IP 地址提取并添加完成，请查看 proxyip.txt 文件。"
@@ -65,4 +65,4 @@ curl -s -X POST "https://telegram.neobirdfly.eu.org/bot${TELEGRAM_API_TOKEN}/sen
      -d "text=${MESSAGE}" || { echo "Error: Failed to send message to Telegram" ; exit 1; }
 
 # 提示完成
-echo "大爷！已经完活儿了，回见吧您嘞！"
+echo "已经完活儿了，回见吧您嘞！"
