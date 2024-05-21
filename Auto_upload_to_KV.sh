@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 执行 CloudflareST 测试并生成 cdnip.csv 文件
-./CloudflareST --allip -n 200 --httping-code 200 -sl 3 -tl 300 -o cdnip.csv
+./CloudflareST --allip -n 200 -sl 3 -tl 300 -o cdnip.csv
 
 # 使用 grep 提取 IP 地址并写入到 cdnip.txt 文件中
 grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' cdnip.csv > cdnip.txt || { echo "Error: Failed to extract IP addresses from cdnip.csv" ; exit 1; }
@@ -60,7 +60,7 @@ if [ -z "$TELEGRAM_API_TOKEN" ] || [ -z "$CHAT_ID" ]; then
 fi
 
 # 使用 curl 命令向 Telegram 发送消息
-curl -s -X POST "https://telegram.neobirdfly.eu.org/bot${TELEGRAM_API_TOKEN}/sendMessage" \
+curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage" \
      -d "chat_id=${CHAT_ID}" \
      -d "text=${MESSAGE}" || { echo "Error: Failed to send message to Telegram" ; exit 1; }
 
